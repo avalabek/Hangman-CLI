@@ -1,20 +1,44 @@
-var WeatherAdmin = require("./WeatherAdmin");
+var Game = require("./game.js");
+var Word = require ("./word.js");
+var inquirer = require ("inquirer");
 
-// Hold the value whether someone is an "admin" or "user"
-var loginType = process.argv[2];
+var guess;
+var guessesLeft;
+var guessedLetters = [];
+var wins = 0;
+var losses = 0;
 
-// If they are a user... they will also need to provide a "name"
-var userName = process.argv[3];
+var arrayWords = ["bazooka", "cloister", "rampart", "bilge","bungalow","shampoo","cherub","mauve", "brackish","aloof", "fjord", "muesli", "sauna", "lager"];
 
-// And they will need to provide a "location"
-var userLocation = process.argv[4];
+var game = new Game(arrayWords);
+var getWord = game.chooseWord();
+var word = new Word(getWord);
 
-// Create an instance of the WeatherAdmin. Remember WeatherAdmin is a constructor! Not an object.
-var myAdmin = new WeatherAdmin();
-
-if (loginType === "admin") {
-  myAdmin.getData();
+var index = arrayWord.indexOf(getWord);
+console.log(index);
+function startGame(){
+  console.log("\nHangman! Words in English that aren't.\n");
+  console.log("Current word: " + word.showWord());
+  console.log("Guesses left: " + guessesLeft);
+  console.log("Letters guessed: " + guessedLetters);
+  console.log("Wins: " + wins);
+  console.log("Losses: "+ losses);
 }
-else {
-  myAdmin.newUserSearch(userName, userLocation);
+function startOver(){
+  index = "";
+  game = new Game(arrayWords);
+  word = new Word(getWord);
+  index = arrayWords.indexOf(getWord);
+  lettersGuessed = [];
+  guessesLeft = 10;
+  startGame();
+  guess();
+}
+
+function correctWord(){
+  if (word.gameOver()){
+    if (index != -1){
+      arrayWord.splice(index, 1);
+    }
+  }
 }

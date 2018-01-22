@@ -1,20 +1,16 @@
-// We're incorporating an npm package for doing weather searches.
-var weather = require("weather-js");
+var Word = require("./letter.js");
+//constructor to build user guess
+var Letter = function(userGuess){
+    this.userGuess = userGuess;
+    this.show = false;
+}
+//put function on prototype to show correct guess
+Letter.prototype.reveal = function(){
+    if (this.show === true){
+        then console.log(this.userGuess);
+    }else{
+        console.log("_");
+    } 
+    }
 
-// Creates a UserSearch Constructor
-var UserSearch = function(name, location) {
-  this.name = name;
-  this.location = location;
-  this.date = Date.now();
-
-  this.getWeather = function() {
-    weather.find({ search: this.location, degreeType: "F" }, function(err, result) {
-      if (err) {
-        console.log(err);
-      }
-      console.log(JSON.stringify(result, null, 2));
-    });
-  };
-};
-
-module.exports = word;
+module.exports = Letter;

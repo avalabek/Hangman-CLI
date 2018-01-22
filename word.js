@@ -1,22 +1,37 @@
-var fs = require("fs");
-var UserSearch = require("./UserSearch");
+var Letter = require("./letter.js");
 
-var WeatherAdmin = function() {
-  this.getData = function() {
-    fs.readFile("log.txt", "utf8", function(error, data) {
-      console.log(data);
-    });
-  };
+var Word = function(userGuess){
+    this.userGuess = userGuess;
+    this.letters = userGuess{
+        //need to split input at " " and then check letter
+    }
 
-  this.newUserSearch = function(name, location) {
-    var newUserSearch = new UserSearch(name, location);
-    var logTxt =
-      "\nName: " + newUserSearch.name + " Location: " + newUserSearch.location + " Date: " + newUserSearch.date;
+}
 
-    fs.appendFile("log.txt", logTxt);
+showWord(){
+    var word = this.letters
+//join them by ""
+}
+console.log(word);
+return word;
+}
 
-    newUserSearch.getWeather();
-  };
-};
-
-module.exports = letter;
+userGuess(guess){
+    this.letters.map (function(letter){
+        if (guess === letter.userGuess){
+            letter.show = true;
+            return true;
+        }else {
+            return false;
+        }
+        
+    })
+    //.some(function(v){
+    //    return v;
+   // })
+}
+gameOver(){
+    return this.showWord() === this.userGuess;
+}
+}
+module.exports = Word;
