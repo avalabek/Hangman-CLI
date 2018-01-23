@@ -7,8 +7,8 @@ var Letter = function(userGuess){
 //put function on prototype to show correct guess
 Letter.prototype.reveal = function(){
     if (this.show === true){
-        then console.log(this.userGuess);
-    }else{
+         console.log(this.userGuess);
+        //need to reassign this.show to true after each guess?? or change it so that this.userGuess===the right letter    }else{
         console.log("_");
     } 
     }

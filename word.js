@@ -13,8 +13,7 @@ showWord(){
 //join them by ""
 }
 console.log(word);
-return word;
-}
+
 
 userGuess(guess){
     this.letters.map (function(letter){
@@ -26,9 +25,7 @@ userGuess(guess){
         }
         
     })
-    //.some(function(v){
-    //    return v;
-   // })
+    
 }
 gameOver(){
     return this.showWord() === this.userGuess;
