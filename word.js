@@ -40,7 +40,7 @@ Word.prototype.guess = function(guessLetter){
 // should all these functions be on prototype or?
 Word.prototype.findWord = function(){
     var found = false;
-    if (this.character.every(isTrue()){
+    if (this.character.every()){
         found = true;
         return found;
     }

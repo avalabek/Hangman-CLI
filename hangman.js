@@ -4,19 +4,19 @@ var prompt = require ("prompt");
 prompt.start();
 
 var game = {
-  wordBank: ["bazooka", "cloister", "rampart", "bilge", "bungalow", "shampoo", "cherub", "mauve", "brackish", "aloof", "fjord", "muesli", "sauna", "lager"];
+  wordBank: ["bazooka", "cloister", "rampart", "bilge", "bungalow", "shampoo", "cherub", "mauve", "brackish", "aloof", "fjord", "muesli", "sauna", "lager"],
   guessesLeft: 10,
   currentWord: null,
   startGame: function(wrd){
     var randomWord = this.wordBank[Math.floor(Math.random() * this.wordBank.length)];
     console.log(randomWord);
-    this.currentWord: new Word(randomWord);
+    this.currentWord = new Word(randomWord);
     this.currentWord.getLetters();
     this.keepPrompting();
 },
 keepPrompting: function(){
   var self = this;
-  prompt.get(["guessLetter",]function(err,result){
+  prompt.get(["guessLetter"],function(err,result){
     console.log("You guessed: " + result.guessLetter);
     var userGuess = self.currentWord.guess(result.guessLetter);
     console.log("You have guessed " + userGuess + "times.");
