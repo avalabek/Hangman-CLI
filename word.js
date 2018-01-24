@@ -1,7 +1,7 @@
 var Letter = require("./letter.js");
 
-function Word(){
-    this.word = word;
+function Word(wrd){
+    this.word = wrd;
     this.character = [];
     this.found = false; 
 
@@ -38,7 +38,7 @@ Word.prototype.guess = function(guessLetter){
 // }
 
 // should all these functions be on prototype or?
-Word.prototype.findLetter = function(){
+Word.prototype.findWord = function(){
     var found = false;
     if (this.character.every(isTrue()){
         found = true;
