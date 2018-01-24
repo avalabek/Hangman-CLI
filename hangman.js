@@ -15,36 +15,43 @@ var game = {
     this.keepPrompting();
 },
 keepPrompting: function(){
-  var self = this;
-  prompt.get(["guessLetter"],function(err,result){
-    console.log("You guessed: " + result.guessLetter);
-    var userGuess = self.currentWord.guess(result.guessLetter);
+  
+  prompt.get(["guessaletter"],function(err,result){
+    console.log("You guessed: " + result.guessaletter);
+    var userGuess = this.currentWord.guess(result.guessLetter);
     console.log("You have guessed " + userGuess + "times.");
     if (userGuess === 0) {
       console.log("Wrong guess!");
-      self.guessesLeft -=1;
+      this.guessesLeft -=1;
     } else {
       console.log ("Correct guess!");
-      if (self.currentWord.findWord()){
+      if (this.currentWord.findWord()){
         console.log ("You win!");
         return 1;
       }else {
-        console.log ("Guesses left: " + self.guessesLeft);
-        console.log(self.currentWord.revealWord());
-        if (self.guessesLeft > 0 && self.currentWord.found === false){
-          self.keepPrompting();
+        console.log ("Guesses left: " + this.guessesLeft);
+        console.log(this.currentWord.revealWord());
+        if (this.guessesLeft > 0 && this.currentWord.found === false){
+          this.keepPrompting();
         }else {
-          if (self.guessesLeft === 0){
+          if (this.guessesLeft === 0){
             console.log("Game over.");
-            console.log("The word you wanted was: " + self.randomWord);
+            console.log("The word you wanted was: " + this.randomWord);
 
           }else{
-            console.log(self.currentWord.revealWord());
+            console.log(this.currentWord.revealWord());
           }
         }
       }
     }
   });
 }
+}
+function startGame() {
+  console.log("\nHangman! Words in English that aren't.\n");
+  console.log("Current word: " + word.revealWord());
+  console.log("Guesses left: " + guessesLeft);
+  console.log("Letters guessed: " + guessedLetters);
+  
 }
 game.startGame();
