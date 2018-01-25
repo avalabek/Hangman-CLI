@@ -1,57 +1,63 @@
 
 var Word = require ("./word.js");
 var prompt = require ("prompt");
+
+    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    console.log("\nHangman! Words in English that aren't.\n");
+    console.log("Guess a letter.");
+    console.log("Learn how enriched English is by other languages!");
+    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 prompt.start();
+
 
 var game = {
   wordBank: ["bazooka", "cloister", "rampart", "bilge", "bungalow", "shampoo", "cherub", "mauve", "brackish", "aloof", "fjord", "muesli", "sauna", "lager"],
-  guessesLeft: 10,
-  currentWord: null,
+  wordsWon:0,
+  guessesRemaining: 10,
+  currentWrd: null,
   startGame: function(wrd){
-    var randomWord = this.wordBank[Math.floor(Math.random() * this.wordBank.length)];
-    console.log(randomWord);
-    this.currentWord = new Word(randomWord);
-    this.currentWord.getLetters();
-    this.keepPrompting();
+    this.resetGuesses();
+    this.currentWrd = new Word (this.wordBank[Math.floor(Math.random()* this.wordBank.length)]);
+    this.currentWrd.getLet();
+    this.promptUser();
+  },
+resetGuesses: function(){
+  this.guessesRemaining = 10;
 },
-keepPrompting: function(){
-  
-  prompt.get(["guessaletter"],function(err,result){
-    console.log("You guessed: " + result.guessaletter);
-    var userGuess = this.currentWord.guess(result.guessLetter);
-    console.log("You have guessed " + userGuess + "times.");
-    if (userGuess === 0) {
+
+promptUser: function(){
+  var self= this;
+  prompt.get(["guessLet"],function(err,result){
+    console.log("You guessed: " + result.guessLet);
+    var manyGuessed = self.currentWrd.checkLetter(result.guessLet);
+    
+    
+    if (manyGuessed === 0) {
       console.log("Wrong guess!");
-      this.guessesLeft -=1;
+      self.guessesRemainig --;
     } else {
       console.log ("Correct guess!");
-      if (this.currentWord.findWord()){
+      if (self.currentWrd.findWord()){
         console.log ("You win!");
-        return 1;
-      }else {
-        console.log ("Guesses left: " + this.guessesLeft);
-        console.log(this.currentWord.revealWord());
-        if (this.guessesLeft > 0 && this.currentWord.found === false){
-          this.keepPrompting();
-        }else {
-          if (this.guessesLeft === 0){
+        console.log ("*********************");
+        return;
+      }
+      }
+
+        console.log ("Guesses left: " + self.guessesRemaining);
+        console.log("__________________________");
+        if ((self.guessesRemaining > 0) && (self.currentWrd.found === false)){
+          self.promptUser();
+        }else if 
+          (self.guessesRemaining === 0){
             console.log("Game over.");
-            console.log("The word you wanted was: " + this.randomWord);
+          console.log("The correct word that has immigrated from another language is: ", self.currentWrd.target);
 
           }else{
-            console.log(this.currentWord.revealWord());
+            console.log(self.currentWrd.wordRender());
           }
-        }
+        });
       }
-    }
-  });
-}
-}
-function startGame() {
-  console.log("\nHangman! Words in English that aren't.\n");
-  console.log("Current word: " + word.revealWord());
-  console.log("Guesses left: " + guessesLeft);
-  console.log("Letters guessed: " + guessedLetters);
-  
-}
+    };
+
 game.startGame();
