@@ -1,4 +1,4 @@
-var Letter = require("./letter.js");
+var letter = require("./letter.js");
 
 function Word(target){
     this.target = target;
@@ -7,7 +7,7 @@ function Word(target){
     
     this.getLet = function(){
         for (var i=0; i< this.target.length; i++){
-            this.characters.push(new Letter(this.target[i]));
+            this.characters.push(new letter(this.target[i]));
 
         }
     };

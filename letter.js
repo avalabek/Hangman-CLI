@@ -3,10 +3,17 @@ var Word = require("./letter.js");
 var Letter = function(let){
     this.charac = let;
     this.appear = false;
-    this.letterRender = function(){
-        return !(this.appear) ? "_": this.charac;
-    };
 };
+    Letter.prototype.letterRender = function(){
+        if (this.appear===false){
+            return("_")
+        }else{
+            return(this.charac);
+        }
+        }
+        // return !(this.appear) ? "_": this.charac;
+    
+// };
 //put function on prototype to show correct guess
 // Letter.prototype.reveal = function(){
 //     if (this.show === false){
