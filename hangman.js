@@ -27,6 +27,7 @@ resetGuesses: function(){
 
 promptUser: function(){
   var self= this;
+  console.log("The word was: " + JSON.stringify(self.currentWrd.target));
   prompt.get(["guessLet"],function(err,result){
     console.log("You guessed: " + result.guessLet);
     var manyGuessed = self.currentWrd.checkLetter(result.guessLet);
@@ -34,11 +35,13 @@ promptUser: function(){
     
     if (manyGuessed === 0) {
       console.log("Wrong guess!");
-      self.guessesRemainig --;
+      self.guessesRemaining --;
     } else {
       console.log ("Correct guess!");
       if (self.currentWrd.findWord()){
         console.log ("You win!");
+        console.log("The word was: " + JSON.stringify(self.currentWrd.target));
+        
         console.log ("*********************");
         return;
       }

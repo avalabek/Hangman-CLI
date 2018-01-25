@@ -1,6 +1,6 @@
-// var Word = require("./letter.js");
+var Word = require("./letter.js");
 //constructor to build user guess
-var letter = function(let){
+var Letter = function(let){
     this.charac = let;
     this.appear = false;
     this.letterRender = function(){
@@ -19,4 +19,4 @@ var letter = function(let){
 //     } 
     
 
-module.exports = letter;
+module.exports = Letter;
