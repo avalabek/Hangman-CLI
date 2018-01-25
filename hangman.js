@@ -4,8 +4,9 @@ var prompt = require ("prompt");
 
     console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     console.log("\nHangman! Words in English that aren't.\n");
-    console.log("Guess a letter.");
+    
     console.log("Learn how enriched English is by other languages!");
+console.log("Guess a letter.");
     console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 prompt.start();
 
@@ -36,6 +37,7 @@ promptUser: function(){
     if (manyGuessed === 0) {
       console.log("Wrong guess!");
       self.guessesRemaining --;
+      //here need to console.log the blanks with letters or in game object
     } else {
       console.log ("Correct guess!");
       if (self.currentWrd.findWord()){

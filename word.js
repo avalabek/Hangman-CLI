@@ -2,26 +2,26 @@ var Letter = require("./letter.js");
 
 function Word(target){
     this.target = target;
-    this.lets = [];
+    this.characters = [];
     this.found = false;
     
     this.getLet = function(){
         for (var i=0; i< this.target.length; i++){
-            this.lets.push(new Letter(this.target[i]));
+            this.characters.push(new Letter(this.target[i]));
 
         }
     };
 this.findWord = function(){
-    this.found = this.lets.every(function(currLett){
+    this.found = this.characters.every(function(currLett){
         return currLett.appear;
     });
     return this.found;
 };
 this.checkLetter = function(guessLet){
     var toReturn = 0;
-    for (var i = 0; i< this.lets.length; i++){
-        if(this.lets[i].charac === guessLet){
-            this.lets[i].appear = true;
+    for (var i = 0; i< this.characters.length; i++){
+        if(this.characters[i].charac === guessLet){
+            this.characters[i].appear = true;
             toReturn ++;
         }
     }
@@ -29,8 +29,8 @@ this.checkLetter = function(guessLet){
 };
 this.wordRender = function (){
     var string = "";
-    for (var i=0; i< this.lets.length; i++){
-        string += this.lets[i].letterRender();
+    for (var i=0; i< this.characters.length; i++){
+        string += this.characters[i].letterRender();
     }
     return string;
 };
