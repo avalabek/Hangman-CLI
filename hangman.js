@@ -3,10 +3,13 @@ var Word = require ("./word.js");
 var prompt = require ("prompt");
 
     console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     console.log("\nHangman! Words in English that aren't.\n");
     
     console.log("Learn how enriched English is by other languages!");
-console.log("Guess a letter.");
+    console.log("Isn't this pretty!")
+console.log("\nGuess a letter.\n");
+    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 prompt.start();
 
@@ -30,6 +33,7 @@ promptUser: function(){
   var self= this;
   // testing: to show correct word to make guess easy
   // console.log("The word was: " + JSON.stringify(self.currentWrd.target));
+  console.log("What's your guess?")
   prompt.get(["guessLet"],function(err,result){
     console.log("You guessed: " + result.guessLet);
     var manyGuessed = self.currentWrd.checkLetter(result.guessLet);
