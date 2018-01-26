@@ -1,5 +1,5 @@
 {
-  "name": "Hangman-CLI",
+  "name": "hangman-cli",
   "version": "1.0.0",
   "description": "",
   "main": "hangman.js",
@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/avalabek/Hangman-CLI#readme",
   "dependencies": {
+    "figlet": "^1.2.0",
     "inquirer": "^5.0.1",
     "prompt": "^1.0.0"
-  }
+  },
+  "devDependencies": {}
 }
