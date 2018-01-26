@@ -1,16 +1,17 @@
 
 var Word = require ("./word.js");
 var prompt = require ("prompt");
+var colors = require ("colors/safe");
 
-    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-    console.log("\nHangman! Words in English that aren't.\n");
+    console.log(colors.yellow("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++"));
+    console.log(colors.white("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++"));
+    console.log(colors.blue("\nHangman! Words in English that aren't.\n"));
     
-    console.log("Learn how enriched English is by other languages!");
+    console.log(colors.magenta("Learn how enriched English is by other languages!"));
     console.log("Isn't this pretty!")
-console.log("\nGuess a letter.\n");
-    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+console.log(colors.red("\nGuess a letter.\n"));
+    console.log(colors.white("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++"));
+    console.log(colors.yellow("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++"));
 prompt.start();
 
 
@@ -31,6 +32,10 @@ resetGuesses: function(){
 
 promptUser: function(){
   //the below neither harms nor helps code; trying to validate letter
+  // When line 51 changed to read 
+  // prompt.get(schema,["guessLet"],function(err,result){
+    //then it will prompt user to make a letter entry if she types a number; however, the rest of
+    // game doesn't work; come back if time.
   var schema = {
     properties: {
       guessLet: {
@@ -43,7 +48,7 @@ promptUser: function(){
   var self= this;
   // testing: to show correct word to make guess easy
   // console.log("The word was: " + JSON.stringify(self.currentWrd.target));
-  console.log("What's your guess?")
+  console.log(colors.blue("What's your guess?"))
   prompt.get(["guessLet"],function(err,result){
     console.log("You guessed: " + result.guessLet);
     
@@ -51,13 +56,13 @@ promptUser: function(){
     
     
     if (manyGuessed === 0) {
-      console.log("Wrong guess!");
+      console.log(colors.red("Wrong guess!"));
       self.guessesRemaining --;
       //here need to console.log the blanks with letters or in game object
     } else {
-      console.log ("Correct guess!");
+      console.log (colors.magenta("Correct guess!"));
       if (self.currentWrd.findWord()){
-        console.log ("You win!");
+        console.log (colors.blue("You win!"));
         console.log("The word that was a language immigrant is: " + JSON.stringify(self.currentWrd.target));
         
         console.log ("*********************");
@@ -71,7 +76,7 @@ promptUser: function(){
           self.promptUser();
         }else if 
           (self.guessesRemaining === 0){
-            console.log("Game over.");
+            console.log(colors.white("Game over."));
           console.log("The correct word that has immigrated from another language is: ", self.currentWrd.target);
 
           }else{
