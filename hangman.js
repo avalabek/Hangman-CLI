@@ -30,12 +30,23 @@ resetGuesses: function(){
 },
 
 promptUser: function(){
+  //the below neither harms nor helps code; trying to validate letter
+  var schema = {
+    properties: {
+      guessLet: {
+        pattern: /^[a-zA-Z\s\-]+$/,
+        message: "Please make sure you guess only letters",
+        required: true
+      }
+    }
+  };
   var self= this;
   // testing: to show correct word to make guess easy
   // console.log("The word was: " + JSON.stringify(self.currentWrd.target));
   console.log("What's your guess?")
   prompt.get(["guessLet"],function(err,result){
     console.log("You guessed: " + result.guessLet);
+    
     var manyGuessed = self.currentWrd.checkLetter(result.guessLet);
     
     
