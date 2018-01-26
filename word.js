@@ -1,5 +1,6 @@
 var letter = require("./letter.js");
 
+
 function Word(target){
     this.target = target;
     this.characters = [];
@@ -27,6 +28,7 @@ this.checkLetter = function(guessLet){
     }
     return toReturn;
 };
+
 this.wordRender = function (){
     var string = "";
     for (var i=0; i< this.characters.length; i++){

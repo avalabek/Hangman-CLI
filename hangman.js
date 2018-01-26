@@ -10,6 +10,7 @@ console.log("Guess a letter.");
     console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 prompt.start();
 
+
 var game = {
   wordBank: ["bazooka", "cloister", "rampart", "bilge", "bungalow", "shampoo", "cherub", "mauve", "brackish", "aloof", "fjord", "muesli", "sauna", "lager"],
   wordsWon:0,
@@ -29,13 +30,12 @@ promptUser: function(){
   var self= this;
   // testing: to show correct word to make guess easy
   // console.log("The word was: " + JSON.stringify(self.currentWrd.target));
- console.log("Guess a letter.");
   prompt.get(["guessLet"],function(err,result){
     console.log("You guessed: " + result.guessLet);
     var manyGuessed = self.currentWrd.checkLetter(result.guessLet);
     
     
-    if (manyGuessed == 0) {
+    if (manyGuessed === 0) {
       console.log("Wrong guess!");
       self.guessesRemaining --;
       //here need to console.log the blanks with letters or in game object
@@ -43,7 +43,7 @@ promptUser: function(){
       console.log ("Correct guess!");
       if (self.currentWrd.findWord()){
         console.log ("You win!");
-        console.log("The word was: " + JSON.stringify(self.currentWrd.target));
+        console.log("The word that was a language immigrant is: " + JSON.stringify(self.currentWrd.target));
         
         console.log ("*********************");
         return;
@@ -52,10 +52,10 @@ promptUser: function(){
 
         console.log ("Guesses left: " + self.guessesRemaining);
         console.log("__________________________");
-        if ((self.guessesRemaining > 0) && (self.currentWrd.found == false)){
+        if ((self.guessesRemaining > 0) && (self.currentWrd.found === false)){
           self.promptUser();
         }else if 
-          (self.guessesRemaining == 0){
+          (self.guessesRemaining === 0){
             console.log("Game over.");
           console.log("The correct word that has immigrated from another language is: ", self.currentWrd.target);
 
