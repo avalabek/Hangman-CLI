@@ -29,10 +29,10 @@ this.checkLetter = function(guessLet){
     return toReturn;
 };
 
-this.wordRender = function (){
+this.wordDisplay = function (){
     var string = "";
     for (var i=0; i< this.characters.length; i++){
-        string += this.characters[i].letterRender();
+        string += this.characters[i].letterDisplay();
     }
     return string;
 };

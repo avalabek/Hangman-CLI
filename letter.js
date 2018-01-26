@@ -6,8 +6,8 @@ var Letter = function(let){
     //   return (this.appear) ? "_": this.charac;
 };
 
-    //below doesn't work but why?
-      Letter.prototype.letterRender = function(){
+    //below doesn't work but why not? 
+      Letter.prototype.letterDisplay = function(){
           if (this.appear===true){
               return("_")
       }else{
